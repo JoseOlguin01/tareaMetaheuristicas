@@ -164,24 +164,38 @@ def simulated_annealing(tamanos, clientes, n, Tmax, Tmin, enfriamiento, iteracio
     mejor_energia = energia_actual
 
     for i in range(iteraciones):
-        T = Tmax - i * ((Tmax - Tmin) / iteraciones)
         
-        vecino_orden, vecino_tamanos, vecino_clientes = generar_vecino(x_actual, tamanos,clientes)
-        energia_vecino = calcular_suma_distancias_ponderadas(vecino_tamanos,vecino_clientes, n)
+        # Temperatura de inicio
+        T = Tmax
 
-        if energia_vecino < energia_actual or random.random() < math.exp((energia_actual - energia_vecino) / T):
+        # Generación de una nueva solución vecina
+        vecino_orden, vecino_tamanos, vecino_clientes = generar_vecino(x_actual, tamanos, clientes)
+        energia_vecino = calcular_suma_distancias_ponderadas(vecino_tamanos, vecino_clientes, n)
+
+        # Actualización de la solución
+        if energia_vecino < energia_actual:
             x_actual = vecino_orden
             tamanos = vecino_tamanos
             clientes = vecino_clientes
             energia_actual = energia_vecino
-
-            # Actualizar la mejor solución si es necesario
-            if energia_actual < mejor_energia:
+            mejor_solucion = x_actual
+            mejor_energia = energia_actual
+        else:
+            if T > 0 and random.random() < math.exp((energia_actual - energia_vecino) / T):
+                x_actual = vecino_orden
+                tamanos = vecino_tamanos
+                clientes = vecino_clientes
+                energia_actual = energia_vecino
                 mejor_solucion = x_actual
                 mejor_energia = energia_actual
 
-        # T *= enfriamiento
-        
+        # Aplicando enfriamiento
+        Tmax *= enfriamiento
+
+    # Impresión de la mejor solución con indices i (partiendo de i = 0)
+    print("Mejor solución:", x_actual)
+    print("Energía:", energia_actual)
+
     return mejor_solucion, mejor_energia
 
 # Parámetros del algoritmo
@@ -192,6 +206,6 @@ iteraciones = 1000
 
 # Ejecutar Simulated Annealing
 mejor_orden, mejor_energia = simulated_annealing(tamanos, clientes, n, Tmax, Tmin, enfriamiento, iteraciones)
-
-print("Mejor orden de puestos:", [x + 1 for x in mejor_orden])
+# Impresión de la mejor solución con indices i + 1
+print("Mejor orden de puestos:", [i + 1 for i in mejor_orden])
 print("Energía (distancia total ponderada) de la mejor solución:", mejor_energia)
