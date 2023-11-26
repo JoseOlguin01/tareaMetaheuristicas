@@ -1,5 +1,5 @@
 # tareaMetaheuristicas
-Tarea de Investigación de operaciones: resolución de problema Single Row Facility Layout Problem (SRFLP) usando la metaheurística de Simulated Annealing.
+Tarea de Investigación de operaciones: resolución de problema Single Row Facility Layout Problem (SRFLP) usando la metaheurística de Simulated Annealing en Python.
 
 ## Grupo 1:
   1. Kevin Meza
