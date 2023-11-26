@@ -6,4 +6,4 @@ Tarea de Investigación de operaciones: resolución de problema Single Row Facil
   2. José Olguín
   3. Cristian Suazo
 ## Instrucciones de uso:
-  En la funcion de lectura de archivos, verificar el nombre del archivo de la instancia a resolver, luego ejecutar normalmente.
+  En la funcion de lectura de archivos, verificar el nombre del archivo de la instancia a resolver, luego ejecutar normalmente (clic en run o ejecutar).
