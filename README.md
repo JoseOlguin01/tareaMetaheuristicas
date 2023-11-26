@@ -1,4 +1,4 @@
-# tareaMetaheuristicas
+# Tarea 2 - Metaheuristicas
 Tarea de Investigación de operaciones: resolución de problema usando la metaheurística de Simulated Annealing en Python.
 
 ## Grupo 1:
