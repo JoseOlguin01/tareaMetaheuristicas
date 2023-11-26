@@ -62,7 +62,9 @@ def simulated_annealing(tamanos, clientes, n, Tmax, Tmin, enfriamiento):
     x_actual = list(range(n))  # Orden inicial de los puestos. # Orden de lectura.
     random.shuffle(x_actual) # Solución inicial: ahora es aleatoria.
     mejor_solucion = x_actual
-    energia_actual = calcular_suma_distancias_ponderadas(tamanos, clientes, n)
+    # energia_actual = calcular_suma_distancias_ponderadas(tamanos, clientes, n)
+    energia_actual = calcular_suma_distancias_ponderadas(x_actual, clientes, n)
+
     mejor_energia = energia_actual
     iteraciones = 5000
 
@@ -112,7 +114,7 @@ Tmax = 1000
 Tmin = 1
 enfriamiento = 0.5
 for i in range(10):
-    print("----- EJECUCIÓN", i, ": -----")
+    print("----- EJECUCIÓN", i + 1, ": -----")
     # Ejecutar Simulated Annealing
     mejor_orden, mejor_energia, tiempo_medio = simulated_annealing(tamanos, clientes, n, Tmax, Tmin, enfriamiento)
 
